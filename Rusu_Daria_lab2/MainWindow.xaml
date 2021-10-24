@@ -11,7 +11,7 @@
         <GroupBox x:Name="gbRaised" Header="Raised" FontWeight="Bold" Margin="36,71,536,252"/>
         <Canvas>
             <GroupBox x:Name="gbFilled_" Header="Filled" Height="124" Width="215" Canvas.Left="400" Canvas.Top="63" FontWeight="Bold"/>
-            <Canvas Height="434" Canvas.Left="-10" Width="800" Canvas.Top="-10">
+            <Canvas Height="434" Canvas.Left="-10" Width="800" Canvas.Top="-10" Loaded="Canvas_Loaded">
                 <Label x:Name="lblGlazedRaised" Content="Glazed" Canvas.Left="53" Canvas.Top="99" RenderTransformOrigin="-4.904,-6.438"/>
                 <TextBox x:Name="txtGlazedRaised_" Canvas.Left="135" Canvas.Top="103" Text="0" TextWrapping="Wrap" Width="120" IsReadOnlyCaretVisible="True" RenderTransformOrigin="-0.16,-1.746"/>
                 <Label x:Name="lblSugarRaised" Content="Sugar" Canvas.Left="53" Canvas.Top="141" RenderTransformOrigin="-0.429,-0.113"/>
@@ -25,7 +25,7 @@
                 <GroupBox x:Name="___gbSale" Header="Current Sale" Height="219" Width="482" Canvas.Left="135" Canvas.Top="203" FontWeight="Bold">
                     <Canvas Margin="10,0,-155,0">
                         <Label x:Name="___lblQuantity" Content="Quantity" Canvas.Top="10" RenderTransformOrigin="0.053,-0.345" FontWeight="Normal"/>
-                        <TextBox x:Name="txtQuantity" Canvas.Left="64" Canvas.Top="14" Text="0" TextWrapping="Wrap" Width="67" RenderTransformOrigin="0.536,0.694" FontWeight="Normal"/>
+                        <TextBox x:Name="txtQuantity" Canvas.Left="64" Canvas.Top="14" Text="0" TextWrapping="Wrap" Width="67" RenderTransformOrigin="0.536,0.694" FontWeight="Normal" KeyUp="txtQuantity_KeyPress"/>
                         <Label x:Name="___lblType" Content="Type" Canvas.Left="147" Canvas.Top="12" RenderTransformOrigin="0.499,0.519" FontWeight="Normal"/>
                         <ComboBox x:Name="cmbType__" Canvas.Left="189" Canvas.Top="14" Width="102" RenderTransformOrigin="0.505,0.478"/>
                         <Label x:Name="___lblPrice" Content="Price" Canvas.Left="302" Canvas.Top="14" FontWeight="Normal"/>
@@ -41,15 +41,31 @@
                 <Menu x:Name="mnuMain" Height="21"
 Width="131" Margin="0,26,0,0" Canvas.Left="23" Canvas.Top="-25">
                     <MenuItem Header="File">
-                        <MenuItem Header="Exit"/>
+                        <MenuItem Header="Exit" Click="exitToolStripMenuItem_Click"/>
                     </MenuItem>
                     <MenuItem Header="_Doughnuts">
                         <MenuItem Header="Make">
                             <MenuItem Header="Raised">
-                                <MenuItem x:Name="glazedMenuItem" Header="Glazed"/>
-                                <MenuItem x:Name="sugarMenuItem" Header="Sugar"/>
+                                <MenuItem x:Name="glazedMenuItem" Header="Glazed" 
+                                          Click="glazedToolStripMenuItem_Click"
+                                          IsCheckable="True"/>
+                                <MenuItem x:Name="sugarMenuItem" Header="Sugar" 
+                                          Click="sugarToolStripMenuItem_Click"
+                                          IsCheckable="True"/>
+                                </MenuItem>
+                            <MenuItem Header="Filled">
+                                <MenuItem x:Name="lemonMenuItem" Header="Lemon" 
+                                          Click="lemonToolStripMenuItem_Click"
+                                          IsCheckable="True"/>
+                                <MenuItem x:Name="chocolateMenuItem" Header="Chocolate" 
+                                          Click="chocolateToolStripMenuItem_Click"
+                                          IsCheckable="True"/>
+                                <MenuItem x:Name="vanillaMenuItem" Header="Vanilla" 
+                                          Click="vanillaToolStripMenuItem_Click"
+                                          IsCheckable="True"/>
                             </MenuItem>
-                            <MenuItem Header="Filled"/>
+                            <MenuItem x:Name="mnuStop" Header="Stop"
+                                        Click="stopToolStripMenuItem_Click"/>
                         </MenuItem>
                     </MenuItem>
                 </Menu>
